@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block head %}Welcome to DAT605 Team E's Message Board!{% endblock %}
+{% block content %}
+    {% if form.errors %}
+        <p>Could not find username and password combination. Please try again.</p>
+    {% endif %}
+    <form method="post" action=".">{% csrf_token %}
+        <table border="0">
+            <tr><th><label for="id_username">Username:</label></th><td>{{ form.username }}</td></tr>
+            <tr><th><label for="id_password">Password:</label></th><td>{{ form.password }}</td></tr>
+        </table>
+        <p>
+            <input type="submit" value="Login" />
+            <a href="/register">
+                <span><input type="button" value = "Sign-up"></span>
+            </a>
+        </p>
+        <input type="hidden" name="next" value="/home" />
+    </form>
+{% endblock %}
